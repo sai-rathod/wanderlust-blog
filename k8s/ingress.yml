@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: all-in-one-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+
+    alb.ingress.kubernetes.io/certificate-arn: "<your-acm-arn>"
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443},{"HTTP":80}]'
+
+    alb.ingress.kubernetes.io/actions.ssl-redirect: >
+      {"Type": "redirect", "RedirectConfig": {"Protocol": "HTTPS", "StatusCode": "HTTP_301"}}
+
+spec:
+  ingressClassName: alb
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wanderlust-frontend-ser
+            port:
+              number: 80
+                
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: wanderlust-backend-ser
+            port:
+              number: 80

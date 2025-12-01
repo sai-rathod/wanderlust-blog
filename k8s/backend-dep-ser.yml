@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wanderlust-backend-dep
+  labels:
+    app: wanderlust-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wanderlust-backend
+  template:
+    metadata:
+      labels:
+        app: wanderlust-backend
+        version: 1
+    spec:
+      containers:
+        - name: wanderlust-backend-pod
+          image: sairathod/wanderlust-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "300m"
+              memory: "512Mi"
+          envFrom:
+          - configMapRef:
+              name: backend-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wanderlust-backend-ser
+spec:
+  selector:
+    app: wanderlust-backend
+  ports:
+    - port: 5000
+      targetPort: 5000
+  type: ClusterIP
+
+

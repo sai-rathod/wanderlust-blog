@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wanderlust-frontend-dep
+  labels:
+    app: wanderlust-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wanderlust-frontend
+  template:
+    metadata:
+      labels:
+        app: wanderlust-frontend
+        version: 1
+    spec:
+      containers:
+        - name: wanderlust-frontend
+          image: sairathod/wanderlust-frontend:latest
+          imagePullPolicy: Always
+          env:
+          - name: VITE_API_PATH
+            value: http://localhost:5000
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wanderlust-frontend-ser
+spec:
+  selector:
+    app: wanderlust-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
+
