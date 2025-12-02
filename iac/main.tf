@@ -12,23 +12,6 @@ module "domain_map" {
   domain_name = "practicesayi.online"
 }
 
-module "acm" {
-  source  = "terraform-aws-modules/acm/aws"
-  version = "~> 5.0"
-
-  domain_name = "practicesayi.online"
-  zone_id     = module.domain_map.domain-zone-id
-
-  subject_alternative_names = ["www.practicesayi.online"]
-
-  wait_for_validation = true
-  validation_method   = "DNS"
-
-  tags = {
-    Name        = "wanderlust-certificate"
-  }
-}
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.21.0"
@@ -62,7 +45,7 @@ module "eks" {
     spot_nodes = {
       name = "spot-node-group"
       
-      desired_size = 2
+      desired_size = 1
       min_size     = 1
       max_size     = 3
       
