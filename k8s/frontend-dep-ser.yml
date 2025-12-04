@@ -21,9 +21,6 @@ spec:
         - name: wanderlust-frontend
           image: sairathod/wanderlust-frontend:latest
           imagePullPolicy: Always
-          env:
-          - name: VITE_API_PATH
-            value: https://practicesayi.online
           ports:
             - containerPort: 80
 ---
