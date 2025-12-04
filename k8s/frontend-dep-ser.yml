@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: wanderlust-frontend
-          image: sairathod/wanderlust-frontend:v6
+          image: sairathod/wanderlust-frontend:v7
           imagePullPolicy: Always
           ports:
             - containerPort: 80
