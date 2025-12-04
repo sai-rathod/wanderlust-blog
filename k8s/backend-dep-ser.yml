@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: wanderlust-backend
-        version: v4
+        version: v5
     spec:
       containers:
         - name: wanderlust-backend-pod
