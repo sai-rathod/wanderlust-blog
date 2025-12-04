@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: VITE_API_PATH
-            value: http://practicesayi.online
+            value: http://practicesayi.online/api
           ports:
             - containerPort: 80
 ---
