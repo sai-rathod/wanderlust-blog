@@ -20,6 +20,9 @@ helm repo add fairwinds-stable https://charts.fairwinds.com/stable
 # aws ingress controller:
 helm repo add eks https://aws.github.io/eks-charts
 
+# aws metrics-server:
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+
 ######## installing the helm charts:
 # argocd
 helm install argocd argo/argo-cd -n argocd --create-namespace 
@@ -35,6 +38,12 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
   --set clusterName=wanderlust-cluster \
   --set region=ap-south-1
+
+# aws-metrics-server
+helm install metrics-server metrics-server/metrics-server \
+  --namespace kube-system \
+  --set args={--kubelet-insecure-tls}
+
 
 ######## patching the service to NodePort
 #Argocd
@@ -64,6 +73,5 @@ echo -n "grafana password: " >> passwords.txt && \
 kubectl -n monitoring get secret monitoring-grafana \
   -o jsonpath="{.data.admin-password}" | base64 --decode >> passwords.txt
 echo "" >> passwords.txt  # Added newline
-
 
 

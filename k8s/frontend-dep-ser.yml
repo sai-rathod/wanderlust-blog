@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: wanderlust-frontend
-        version: 2
+        version: "2"
     spec:
       containers:
         - name: wanderlust-frontend
@@ -21,7 +21,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: VITE_API_PATH
-            value: http://localhost:5000
+            value: http://wanderlust-backend-ser:5000
           ports:
             - containerPort: 80
 ---
