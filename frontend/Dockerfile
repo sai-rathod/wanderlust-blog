@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-ENV VITE_API_PATH=https://practicesayi.online
+ENV VITE_API_PATH=""
 
 RUN npm run build
 
