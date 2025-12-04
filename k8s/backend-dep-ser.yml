@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: wanderlust-backend-pod
-          image: sairathod/wanderlust-backend:v6
+          image: sairathod/wanderlust-backend:v7
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
