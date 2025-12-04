@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: wanderlust-frontend
-        version: v1
+        version: v3
     spec:
       containers:
         - name: wanderlust-frontend
