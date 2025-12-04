@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: Always
           env:
           - name: VITE_API_PATH
-            value: http://wanderlust-backend-ser:5000
+            value: http://practicesayi.online
           ports:
             - containerPort: 80
 ---
