@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+ENV VITE_API_PATH=https://practicesayi.online
+
 RUN npm run build
 
 FROM nginx:alpine
