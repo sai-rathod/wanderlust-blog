@@ -15,11 +15,10 @@ spec:
     metadata:
       labels:
         app: wanderlust-frontend
-        version: v5
     spec:
       containers:
         - name: wanderlust-frontend
-          image: sairathod/wanderlust-frontend:latest
+          image: sairathod/wanderlust-frontend:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
