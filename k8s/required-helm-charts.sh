@@ -36,7 +36,7 @@ helm install vpa fairwinds-stable/vpa -n vpa --create-namespace
 # aws-ingress-controller
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
-  --set clusterName=wanderlust-cluster \
+  --set clusterName=wanderlust-app-cluster \
   --set region=ap-south-1
 
 # aws-metrics-server
@@ -54,8 +54,8 @@ kubectl patch svc argocd-server -n argocd \
 kubectl patch svc monitoring-kube-prometheus-prometheus -n monitoring \
   -p '{"spec": {"type": "NodePort"}}'
 
-Grafana
-$kubectl patch svc monitoring-grafana -n monitoring \
+#Grafana
+kubectl patch svc monitoring-grafana -n monitoring \
   -p '{"spec": {"type": "NodePort"}}'
 
 ######## initial passwords to login:
