@@ -245,4 +245,4 @@ For issues or questions, please open an issue in the GitHub repository.
 
 ## 📄 License
 
-[Add your license here]
+This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
