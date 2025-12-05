@@ -4,11 +4,7 @@ A full-stack blogging platform deployed on AWS EKS with CI/CD automation, monito
 
 ## 🏗️ Architecture Overview
 
-```
-
-```
-
----
+<img width="893" height="517" alt="architecture" src="https://github.com/user-attachments/assets/e20fbb63-744b-470e-86f8-761826369430" />
 
 ## 📋 Prerequisites
 
